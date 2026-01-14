@@ -125,6 +125,52 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+		
+/* 連結特效 */
+        .format-link {
+            color: #dc2626;
+            text-decoration: underline;
+            font-weight: bold;
+            position: relative;
+            display: inline-block;
+            transition: all 0.3s ease;
+            text-shadow: 0 0 0 transparent;
+        }
+
+        .format-link:hover {
+            color: #f59e0b;
+            text-shadow: 
+                0 0 8px rgba(245, 158, 11, 0.6),
+                0 0 12px rgba(245, 158, 11, 0.4);
+            transform: scale(1.05);
+            text-decoration: none;
+        }
+
+        .format-link:active {
+            transform: scale(0.95);
+            color: #fbbf24;
+            text-shadow: 
+                0 0 15px rgba(251, 191, 36, 0.8),
+                0 0 20px rgba(251, 191, 36, 0.5);
+        }
+
+        /* 連結前的圖示動畫 */
+        .format-link::before {
+            content: "📋";
+            display: inline-block;
+            margin-right: 4px;
+            transition: transform 0.3s ease;
+        }
+
+        .format-link:hover::before {
+            transform: rotate(10deg) scale(1.2);
+            animation: bounce 0.5s ease infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: rotate(10deg) scale(1.2) translateY(0); }
+            50% { transform: rotate(10deg) scale(1.2) translateY(-3px); }
+        }		
 
     </style>
 </head>
@@ -154,7 +200,12 @@
                     <li><span class="badge-ok">實體</span> 不用拍照，直接提供給當月輪值小天使</li>
                     <li><span class="badge-ok">電子</span> 請提供完整圖檔或PDF檔</li>
                     <li class="text-xs text-red-600 mt-1">⚠️ 模糊、缺漏、統編、抬頭錯誤 = 任務失敗，不予請款</li>
-					<li class="text-xs text-red-600 mt-1">⚠️ 請款憑證格式，請詳閱 <a href="https://www.youtube.com/" target="_blank">【格式說明】</a></li>
+					<ul class="mt-3 list-none">
+    <li class="text-xs text-red-600 mt-1">
+        ⚠️ 請款憑證格式,請詳閱 
+        <a href="photo.html" target="_blank" class="format-link">格式說明</a>
+    </li>
+</ul>
                 </ul>
             </div>
         </div>
@@ -224,7 +275,7 @@
 
  <p class="text-xs text-red-200 opacity-80" style="text-align: left">花錢做什麼（用途說明）</p>
 
- <p class="text-xs text-red-200 opacity-80" style="text-align: left">收款帳號或 LINE Pay 資訊</p>
+ <p class="text-xs text-red-200 opacity-80" style="text-align: left">中國信託收款帳號 或 悠遊付收款資訊</p>
 
  <p class="text-xs text-red-200 opacity-80" style="text-align: left">沒填表單 = 不會處理核銷</p>
  <p class="text-xs text-red-200 opacity-80" style="text-align: left">&nbsp;</p>
@@ -234,7 +285,7 @@
  <p class="text-xs text-red-200 opacity-80" style="text-align: left">核銷通過後，款項只會用以下方式撥款：</p>
 <p class="text-xs text-red-200 opacity-80" style="text-align: left">👉 中國信託銀行轉帳</p>
 
- <p class="text-xs text-red-200 opacity-80" style="text-align: left">👉 LINE Pay 轉帳</p>
+ <p class="text-xs text-red-200 opacity-80" style="text-align: left">👉 悠遊付 轉帳</p>
 
  <p class="text-xs text-red-200 opacity-80" style="text-align: left">&nbsp;</p>
  <p class="text-xs text-red-200 opacity-80" style="text-align: left">不提供現金核銷</p>

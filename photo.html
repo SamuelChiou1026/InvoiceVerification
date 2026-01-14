@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPG 風格 - 通用圖片模版</title>
+    <!-- 引入像素風格中文字體 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* 全局字體設定 */
+        body {
+            font-family: 'DotGothic16', sans-serif;
+            background-color: #1a1a1a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* 羊皮紙背景 */
+        .poster-card {
+            background-color: #f4e4bc;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.5) 2px, transparent 2px),
+                linear-gradient(90deg, rgba(255,255,255,0.5) 2px, transparent 2px),
+                linear-gradient(rgba(255,255,255,0.28) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.28) 1px, transparent 1px);
+            background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+            background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
+            
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 
+                0 0 0 8px #5d4037,
+                0 0 0 12px #3e2723,
+                0 20px 50px rgba(0,0,0,0.8);
+            padding: 24px;
+            position: relative;
+            overflow: hidden;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 暗角效果 */
+        .poster-card::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle, transparent 40%, rgba(139, 69, 19, 0.2) 100%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* 圖片佔位框 */
+        .image-frame {
+            background: #e5e5e5;
+            border: 4px dashed #8b4513;
+            box-shadow: inset 2px 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 180px;
+            overflow: hidden;
+        }
+
+        .image-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+        }
+
+        .image-frame img:hover {
+            opacity: 0.8;
+        }
+
+        .placeholder-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .placeholder-text {
+            color: #8b4513;
+            opacity: 0.5;
+            font-size: 1.2rem;
+            text-align: center;
+        }
+
+        .placeholder-icon {
+            font-size: 3rem;
+            opacity: 0.3;
+            margin-bottom: 8px;
+            color: #8b4513;
+        }
+
+        .error-text {
+            color: #dc2626;
+            font-size: 0.875rem;
+            opacity: 0.7;
+        }
+
+        /* 圖片標題標籤 */
+        .frame-label {
+            position: absolute;
+            top: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #3e2723;
+            color: #ffcc00;
+            padding: 4px 12px;
+            border: 2px solid #5d4037;
+            font-size: 14px;
+            font-weight: bold;
+            box-shadow: 2px 2px 0 rgba(0,0,0,0.3);
+            z-index: 10;
+        }
+
+        /* 底部裝飾 */
+        .corner-deco {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border: 4px solid #8b4513;
+            z-index: 0;
+            opacity: 0.3;
+        }
+        .top-left { top: 12px; left: 12px; border-right: none; border-bottom: none; }
+        .top-right { top: 12px; right: 12px; border-left: none; border-bottom: none; }
+        .bottom-left { bottom: 12px; left: 12px; border-right: none; border-top: none; }
+        .bottom-right { bottom: 12px; right: 12px; border-left: none; border-top: none; }
+
+    </style>
+</head>
+<body>
+
+    <div class="poster-card">
+        
+        <!-- 裝飾角落 -->
+        <div class="corner-deco top-left"></div>
+        <div class="corner-deco top-right"></div>
+        <div class="corner-deco bottom-left"></div>
+        <div class="corner-deco bottom-right"></div>
+
+        <!-- Header -->
+        <div class="text-center mb-6 relative z-10 mt-2">
+            <div class="inline-block border-b-4 border-double border-amber-900 pb-1">
+                <h1 class="text-3xl font-bold text-amber-900 leading-none">發票格式說明</h1>
+            </div>
+            <p class="text-sm text-amber-800 font-bold mt-2 opacity-80">已自動載入圖片</p>
+        </div>
+
+        <!-- 圖片框 1 -->
+        <div class="image-frame flex-1" id="frame1">
+            <div class="frame-label">圖片區域 A</div>
+            <div class="placeholder-content">
+                <span class="placeholder-icon">🖼️</span>
+                <span class="placeholder-text">載入中...</span>
+            </div>
+        </div>
+
+        <!-- 圖片框 2 -->
+        <div class="image-frame flex-1" id="frame2">
+            <div class="frame-label">圖片區域 B</div>
+            <div class="placeholder-content">
+                <span class="placeholder-icon">📸</span>
+                <span class="placeholder-text">載入中...</span>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="relative z-10 mt-4 text-center">
+            <div class="bg-amber-900/10 border-2 border-amber-900/20 p-2 text-xs font-bold text-amber-900 rounded">
+                💡 小提醒:可點選以上圖片放大瀏覽
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // 載入圖片的函數
+        async function loadImage(frameId, imagePath, label) {
+            const frame = document.getElementById(frameId);
+            
+            try {
+                const img = document.createElement('img');
+                img.src = imagePath;
+                img.alt = label;
+                
+                // 等待圖片載入
+                await new Promise((resolve, reject) => {
+                    img.onload = resolve;
+                    img.onerror = reject;
+                });
+                
+                // 清空占位內容並插入圖片
+                frame.innerHTML = `<div class="frame-label">${label}</div>`;
+                frame.appendChild(img);
+                
+                // 點擊圖片時在新視窗中開啟原圖
+                img.addEventListener('click', () => {
+                    window.open(imagePath, '_blank');
+                });
+                
+            } catch (error) {
+                // 載入失敗時顯示錯誤訊息
+                frame.innerHTML = `
+                    <div class="frame-label">${label}</div>
+                    <div class="placeholder-content">
+                        <span class="placeholder-icon">⚠️</span>
+                        <span class="error-text">圖片載入錯誤<br><span class="text-xs">(${imagePath})</span></span>
+                    </div>
+                `;
+            }
+        }
+
+        // 頁面載入時執行
+        window.addEventListener('DOMContentLoaded', () => {
+            loadImage('frame1', '1.jpg', '需要上傳平台的發票格式');
+            loadImage('frame2', '2.jpg', '以下格式不用上傳');
+        });
+    </script>
+
+</body>
+</html>
